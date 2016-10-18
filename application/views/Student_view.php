@@ -12,7 +12,7 @@
     <h1>Students example</h1>
     <table>
 
-        <tr><th>Nr.crt.</th><th>Nume</th> <th>Delete</th></tr>
+        <tr><th>Nr.crt.</th> <th>Nume</th> <th>Delete</th> <th>Update</th></tr>
 
         <?php
         $i=1;
@@ -30,6 +30,13 @@
                 echo form_close();
             echo "</td>";
 
+            echo "<td>";
+            echo form_open(base_url()."student_controller/update_view");
+            echo form_hidden('id_upd',$row->student_id);
+            echo form_submit('update','Update');
+            echo form_close();
+            echo "</td>";
+
             echo "</tr> ";
 
         }
@@ -40,12 +47,15 @@
     </table>
 
     <?php
+    echo validation_errors();
         echo form_open(base_url()."student_controller/insert");
         echo form_label("Name: ");
-        echo form_input(array("id"=>"name","name"=>"name", "type"=>"text", "required"=>"true"));
+        echo form_input(array("id"=>"name","name"=>"name", "type"=>"text"));
         echo form_submit(array("id"=>"submit", "name"=>"submit", "value"=>"Insert"));
         echo form_close();
     ?>
+
+
 
     </body>
 

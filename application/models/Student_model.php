@@ -36,6 +36,14 @@ class Student_model extends CI_Model
         $this->db->delete('students', array("student_id" => $id));
         return true;
     }
+
+    public function update_data($id,$new_data)
+    {
+        $this->db->where('student_id', $id);
+        $this->db->update('students', $new_data);
+        return true;
+
+    }
 }
 
 ?>
