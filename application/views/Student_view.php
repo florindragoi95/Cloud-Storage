@@ -31,7 +31,7 @@
             echo "</td>";
 
             echo "<td>";
-            echo form_open(base_url()."student_controller/update_view");
+            echo form_open(base_url()."student_controller/update_sendID");
             echo form_hidden('id_upd',$row->student_id);
             echo form_submit('update','Update');
             echo form_close();

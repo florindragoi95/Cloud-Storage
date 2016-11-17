@@ -19,9 +19,6 @@
         echo form_hidden('id',$id);
         echo form_submit('update','Update');
         echo form_close();
-
-
-
     ?>
 
 </body>

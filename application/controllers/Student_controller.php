@@ -10,8 +10,8 @@ class Student_controller extends CI_Controller
     }
 
     public function index(){
-        $this->select();
-    }
+    $this->select();
+}
 
     public function select()
     {
@@ -47,7 +47,7 @@ class Student_controller extends CI_Controller
         redirect(base_url()."student_controller", "refresh" );
     }
 
-    public function update_view()
+    public function update_sendID()
     {
 
         $id = $this->input->post('id_upd');
@@ -62,7 +62,7 @@ class Student_controller extends CI_Controller
 
         if ($this->form_validation->run()==false)
         {
-            $this->update_view();
+            $this->update_sendID();
         }
         else
         {
