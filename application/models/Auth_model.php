@@ -18,37 +18,40 @@ class Auth_model extends CI_Model
         return $query->result();
     }
 
-    public function login($username,$password)
+    public function login($username, $password)
     {
         $this->db->select('id,username,password');
         $this->db->from('users');
-        $this->db->where('username',$username);
-        $this->db->where('password',$password);
-        //var_dump(array('username','password'));
-        $query = $this -> db -> get();
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $query = $this->db->get();
 
-        if($query -> num_rows() == 1)
-        {
-            //return $query->result();
-
-            redirect(base_url()."admin_controller", "refresh" );
-        }
-        else
-        {
-            redirect(base_url()."home_controller", "refresh" );
+        if($query->num_rows() == 1 ) {
+            return 1;
         }
 
+        return 0;
     }
 
     public function register($data)
     {
-        $this->db->insert('users',$data);
+        $this->db->select("username");
+        $this->db->from('users');
+        $this->db->where("username",$data['username']);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0)
+        {
+            echo "This user exist";
+        }
+        else
+        {
+            $this->db->insert('users', $data);
+        }
+
+
 
     }
 
 
-
-
 }
-
-?>

@@ -12,15 +12,15 @@
 <h1>Login Page</h1>
 
 <?php
-    echo form_open(base_url()."auth_controller/login");
+    echo form_open(base_url()."auth_controller/check_login");
 
     echo form_label("username: ");
-    echo form_input(array("id"=>"name","name"=>"name", "type"=>"text"));
+    echo form_input(array("id"=>"name","name"=>"username", "type"=>"text"));
     echo "<br>";
     echo form_label("password: ");
     echo form_password(array("id"=>"password","name"=>"password"));
     echo "<br>";
-    echo form_submit(array("id"=>"submit", "name"=>"submit", "value"=>"Insert"));
+    echo form_submit(array("id"=>"submit", "name"=>"submit", "value"=>"Login"));
     echo form_close();
 ?>
 
@@ -31,4 +31,3 @@
 </body>
 
 </html>
-

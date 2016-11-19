@@ -31,19 +31,28 @@ class Auth_controller extends CI_Controller
             "password" => $this->input->post('pass'),
         );
 
-        //var_dump($data); die();
         $this->Auth_model->register($data);
+        redirect(base_url()."auth_controller", "refresh" );
+
     }
 
-
-    public function login()
+    public function check_login()
     {
-        $username = $this->input->post('name');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
-        //var_dump(array($username,$password)); die();
-        $this->Auth_model->login($username,$password);
-    }
 
+        $log = $this->Auth_model->login($username,$password);
+
+        if ($log >0)
+        {
+            redirect(base_url()."admin_controller", "refresh" );
+        }
+        else{
+
+            redirect(base_url()."auth_controller", "refresh" );
+        }
+
+    }
 
 }
 
